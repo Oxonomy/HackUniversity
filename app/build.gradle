@@ -9,6 +9,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resValue "string", "here_app_id", "$System.env.HERE_APP_ID"
+        resValue "string", "here_app_code", "$System.env.HERE_APP_CODE"
+        resValue "string", "here_license_key", "$System.env.HERE_LICENSE_KEY"
     }
     buildTypes {
         release {
