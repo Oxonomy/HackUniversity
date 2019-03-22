@@ -26,6 +26,15 @@
         <meta-data android:name="com.here.android.maps.appid" android:value="@string/here_app_id"/>
         <meta-data android:name="com.here.android.maps.apptoken" android:value="@string/here_app_code"/>
         <meta-data android:name="com.here.android.maps.license.key" android:value="@string/here_license_key"/>
+
+        <service
+            android:name="com.here.android.mpa.service.MapService"
+            android:label="@string/here_label_name"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="@string/here_intent_name" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

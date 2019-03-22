@@ -13,6 +13,8 @@ android {
         resValue "string", "here_app_id", "$System.env.HERE_APP_ID"
         resValue "string", "here_app_code", "$System.env.HERE_APP_CODE"
         resValue "string", "here_license_key", "$System.env.HERE_LICENSE_KEY"
+        resValue "string", "here_label_name", "$System.env.HERE_LABEL_NAME"
+        resValue "string", "here_intent_name", "$System.env.HERE_INTENT_NAME"
     }
     buildTypes {
         release {
