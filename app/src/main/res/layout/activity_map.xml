@@ -7,20 +7,24 @@
     android:orientation="vertical"
     tools:context=".MapActivity">
 
-
-    <!-- Map Fragment embedded with the map object -->
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Route"
-        android:id="@+id/button"
-        android:layout_alignParentRight="true" />
-
     <fragment
         class="com.here.android.mpa.mapping.SupportMapFragment"
         android:id="@+id/mapfragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <Button
+        android:text="Create Route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/makeRouteButton"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="Camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toCameraActivityButton"
+        android:onClick="launchCameraActivity" />
 
 </RelativeLayout>

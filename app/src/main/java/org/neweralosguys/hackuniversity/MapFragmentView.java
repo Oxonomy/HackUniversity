@@ -100,7 +100,7 @@ public class MapFragmentView {
     }
 
     private void initCreateRouteButton() {
-        m_createRouteButton = m_activity.findViewById(R.id.button);
+        m_createRouteButton = m_activity.findViewById(R.id.makeRouteButton);
 
         m_createRouteButton.setOnClickListener(v -> {
             /*

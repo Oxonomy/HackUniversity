@@ -4,17 +4,11 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "org.neweralosguys.hackuniversity"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        resValue "string", "here_app_id", "5sYkusKi5D0ARvNyIVQH"
-        resValue "string", "here_app_code", "0ACDW5T1lqjTUVbItzgoZA"
-        resValue "string", "here_license_key", "Lk27zTWBcpF6w9Q+VOCFUcHuyAYGAiY7Xa0RF7YMwS2gZXiBT9XPBYXSCFK504XFFZ0A+MbrjoVZr9tpn5j9WpPFfqnB0Zkbex4fypwN9CrRBE+qrPBXxFmopfuFA9eoowRMUcuN5ylimpWpX66seJG1PHe1IMBOzGPBc4hZUoUa8l/n5ekSygwofMkiV0FF8MnXrdDQht+s52NFSU9YZoyif2OyIB83r+jvd4WexdZp2q86bopSbZa4NsAblHH2WEd3YHLn+4VBRwD5Vir9/RR8maoLDK3RX0HFVoyWrbbkD7hnv48ZM6WBTjEEZ5ofy8XpiLpIgvSqUiYV6cUWT5tBelwfbdYRePZ+yFxliyhrzhTQQzR/15iI9/B/LvjunhioG2esZgT/y7UVU3BDUsgLfxSr4ynsgQ9lbnX21xSGyn9V3oNFavgFS7KjDRd39gE3v8Tj15OuQisDGhINb48wWfwP8e9sAGt9wU6tHi8FcC3bW4YVUJDu3cZo1K+6u3IantqrYKY8hCS/mV4VEwKI69S3IvQYagu/FPicHNtRwNx/TJZr5gutUEvBtL2i+JpjgCukTHLphYiKuXi+VPUaR/zq9JtHSL9M3zZY6xDb7/Detg21uKINgamausTMjV1z5+0zvNcJjNLTcFnT7YIBZaAhI7JTfhB8oSkhl20="
-        resValue "string", "here_label_name", "HackUniversity_2019"
-        resValue "string", "here_intent_name", "org.neweralosguys.test"
     }
     buildTypes {
         release {
@@ -42,7 +36,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:support-annotations:28.0.0'
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.7.0"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+apply plugin: 'com.google.ar.sceneform.plugin'
