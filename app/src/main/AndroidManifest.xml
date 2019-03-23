@@ -8,55 +8,69 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera.ar" android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
 
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/title_activity_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <meta-data android:name="com.google.ar.core" android:value="required" />
-
-        <meta-data android:name="com.here.android.maps.appid" android:value="5sYkusKi5D0ARvNyIVQH" />
-        <meta-data android:name="com.here.android.maps.apptoken" android:value="0ACDW5T1lqjTUVbItzgoZA" />
-        <meta-data android:name="com.here.android.maps.license.key" android:value="Lk27zTWBcpF6w9Q+VOCFUcHuyAYGAiY7Xa0RF7YMwS2gZXiBT9XPBYXSCFK504XFFZ0A+MbrjoVZr9tpn5j9WpPFfqnB0Zkbex4fypwN9CrRBE+qrPBXxFmopfuFA9eoowRMUcuN5ylimpWpX66seJG1PHe1IMBOzGPBc4hZUoUa8l/n5ekSygwofMkiV0FF8MnXrdDQht+s52NFSU9YZoyif2OyIB83r+jvd4WexdZp2q86bopSbZa4NsAblHH2WEd3YHLn+4VBRwD5Vir9/RR8maoLDK3RX0HFVoyWrbbkD7hnv48ZM6WBTjEEZ5ofy8XpiLpIgvSqUiYV6cUWT5tBelwfbdYRePZ+yFxliyhrzhTQQzR/15iI9/B/LvjunhioG2esZgT/y7UVU3BDUsgLfxSr4ynsgQ9lbnX21xSGyn9V3oNFavgFS7KjDRd39gE3v8Tj15OuQisDGhINb48wWfwP8e9sAGt9wU6tHi8FcC3bW4YVUJDu3cZo1K+6u3IantqrYKY8hCS/mV4VEwKI69S3IvQYagu/FPicHNtRwNx/TJZr5gutUEvBtL2i+JpjgCukTHLphYiKuXi+VPUaR/zq9JtHSL9M3zZY6xDb7/Detg21uKINgamausTMjV1z5+0zvNcJjNLTcFnT7YIBZaAhI7JTfhB8oSkhl20=" />
-
-        <!--Developers should always provide custom values for each of {YOUR_LABEL_NAME} and {YOUR_INTENT_NAME}.
-        Do not reuse HERE SDK defaults.-->
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
+        <meta-data
+            android:name="com.here.android.maps.appid"
+            android:value="5sYkusKi5D0ARvNyIVQH" />
+        <meta-data
+            android:name="com.here.android.maps.apptoken"
+            android:value="0ACDW5T1lqjTUVbItzgoZA" />
+        <meta-data
+            android:name="com.here.android.maps.license.key"
+            android:value="Lk27zTWBcpF6w9Q+VOCFUcHuyAYGAiY7Xa0RF7YMwS2gZXiBT9XPBYXSCFK504XFFZ0A+MbrjoVZr9tpn5j9WpPFfqnB0Zkbex4fypwN9CrRBE+qrPBXxFmopfuFA9eoowRMUcuN5ylimpWpX66seJG1PHe1IMBOzGPBc4hZUoUa8l/n5ekSygwofMkiV0FF8MnXrdDQht+s52NFSU9YZoyif2OyIB83r+jvd4WexdZp2q86bopSbZa4NsAblHH2WEd3YHLn+4VBRwD5Vir9/RR8maoLDK3RX0HFVoyWrbbkD7hnv48ZM6WBTjEEZ5ofy8XpiLpIgvSqUiYV6cUWT5tBelwfbdYRePZ+yFxliyhrzhTQQzR/15iI9/B/LvjunhioG2esZgT/y7UVU3BDUsgLfxSr4ynsgQ9lbnX21xSGyn9V3oNFavgFS7KjDRd39gE3v8Tj15OuQisDGhINb48wWfwP8e9sAGt9wU6tHi8FcC3bW4YVUJDu3cZo1K+6u3IantqrYKY8hCS/mV4VEwKI69S3IvQYagu/FPicHNtRwNx/TJZr5gutUEvBtL2i+JpjgCukTHLphYiKuXi+VPUaR/zq9JtHSL9M3zZY6xDb7/Detg21uKINgamausTMjV1z5+0zvNcJjNLTcFnT7YIBZaAhI7JTfhB8oSkhl20=" />
+        <!--
+Developers should always provide custom values for each of {YOUR_LABEL_NAME} and {YOUR_INTENT_NAME}.
+        Do not reuse HERE SDK defaults.
+        -->
         <meta-data
             android:name="INTENT_NAME"
             android:value="org.neweralosguys.test" />
+
         <service
             android:name="com.here.android.mpa.service.MapService"
-            android:label="HackUniversity_2019"
-            android:exported="false">
+            android:exported="false"
+            android:label="HackUniversity_2019">
             <intent-filter>
-                <action android:name="org.neweralosguys.test"></action>
+                <action android:name="org.neweralosguys.test" />
             </intent-filter>
         </service>
 
         <activity
             android:name=".CameraActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="true"
+            android:label="@string/app_name"
             android:screenOrientation="locked"
-            android:exported="true">
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".MapActivity" />
     </application>
 
 </manifest>
