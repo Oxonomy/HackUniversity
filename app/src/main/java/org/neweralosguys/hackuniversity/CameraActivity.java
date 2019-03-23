@@ -2,6 +2,7 @@ package org.neweralosguys.hackuniversity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -23,6 +24,9 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CameraActivity extends AppCompatActivity {
     private static final String TAG = CameraActivity.class.getSimpleName();
@@ -112,6 +116,18 @@ public class CameraActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.toMapActivityButton:
                 startActivity(new Intent(this, MapActivity.class));
+        }
+    }
+    public void launchInfoActivity(View view) {
+
+        switch (view.getId()) {
+            case R.id.toInfoActivityButton:
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("A", "123");
+                GlobalValues.currentProduct = new Product("ABCD", map,"", 3.4f, "");
+                GlobalValues.currentStore = "A";
+                startActivity(new Intent(this, InfoActivity.class));
+
         }
     }
 }

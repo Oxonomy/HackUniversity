@@ -1,5 +1,6 @@
 package org.neweralosguys.hackuniversity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RatingBar;
@@ -8,16 +9,15 @@ import android.widget.TextView;
 public class InfoActivity extends AppCompatActivity {
 
     public Product Product;
-    public final String Store;
-    public InfoActivity(Product product, String store){
-        this.Product = product;
-        Store = store;
-    }
+    public String Store;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        Product = GlobalValues.currentProduct;
+        Store = GlobalValues.currentStore;
 
         TextView ObjectNameView = (TextView) findViewById(R.id.ObjectNameView);
         ObjectNameView.setText(Product.Name);
