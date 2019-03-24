@@ -18,14 +18,7 @@ public class GlobalValues {
 
     public static void onCreate()
     {
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("A", "123");
-        GlobalValues.currentProduct = new Product("ABCD", map,"", 3.4f, "");
 
-        GlobalValues.currentStore = "A";
-
-        AllProducts.add(currentProduct);
-        AllProducts.add(currentProduct);
     }
 
 
