@@ -14,6 +14,6 @@ public class ProductBasketActivity extends AppCompatActivity {
     }
 
     public void addProduct(View view) {
-        startActivity(new Intent(this, CameraActivity.class));
+        startActivity(new Intent(this, ProductListActivity.class));
     }
 }
