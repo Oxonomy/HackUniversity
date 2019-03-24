@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -69,6 +70,8 @@ public class ProductBasketActivity extends AppCompatActivity {
             sum += Float.parseFloat(p.Price.get(GlobalValues.currentStore));
         }
 
+        Button showMap = (Button) findViewById(R.id.showMap);
+        showMap.setText("Сумма покупки: " + sum + "Р .\nПроложить маршрут до магазина");
 
         names = new ArrayList();
         for (Product p: GlobalValues.BasketProducts)
