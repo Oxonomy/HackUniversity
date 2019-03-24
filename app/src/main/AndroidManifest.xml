@@ -23,7 +23,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ProductBasketActivity"></activity>
+        <activity android:name=".ProductListActivity"></activity>
+        <activity android:name=".ProductBasketActivity" />
         <activity
             android:name=".InfoActivity"
             android:label="@string/title_activity_info"
