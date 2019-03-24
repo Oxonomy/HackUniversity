@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">HackUniversity</string>
     <string name="title_activity_info">InfoActivity</string>
+    <string name="fit_image_to_scan">Fit image to scan</string>
 </resources>

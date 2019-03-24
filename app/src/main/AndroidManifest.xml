@@ -58,7 +58,7 @@ Developers should always provide custom values for each of {YOUR_LABEL_NAME} and
         </service>
 
         <activity
-            android:name=".CameraActivity"
+            android:name=".AugmentedImageActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:label="@string/app_name"
