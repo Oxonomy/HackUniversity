@@ -63,6 +63,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
     if (augmentedImageMap.isEmpty()) {
       fitToScanView.setVisibility(View.VISIBLE);
     }
+
   }
 
   /**
