@@ -128,92 +128,86 @@ public class MapFragmentView {
 
     /* Creates a route from 4350 Still Creek Dr to Langley BC with highways disallowed */
     private void createRoute() {
-        HashMap<String, RouteWaypoint[]> places = new HashMap<>();
-        places.put("Pyaterochka", new RouteWaypoint[]{
-                new RouteWaypoint(new GeoCoordinate(49.259149, -123.008555)),
-                new RouteWaypoint(new GeoCoordinate(49.073640, -122.559549))
-        });
-//        places.put("Pyaterochka2", new RouteWaypoint[]{
-//                new RouteWaypoint(new GeoCoordinate(49.000000, -121.000000)),
-//                new RouteWaypoint(new GeoCoordinate(49.000000, -120.000000))
-//        });
+        HashMap<String, RouteWaypoint> places = new HashMap<>();
+
+        places.put("current", new RouteWaypoint(new GeoCoordinate(59.9955082,30.2945393)));
+        places.put("Сити Молл", new RouteWaypoint(new GeoCoordinate(60.0055137,30.3005185)));
+        places.put("АШАН", new RouteWaypoint(new GeoCoordinate(60.0087375,30.297511)));
+        places.put("2 шага", new RouteWaypoint(new GeoCoordinate(60.0276602,30.4134961)));
 
         /* Initialize a CoreRouter */
         CoreRouter coreRouter = new CoreRouter();
 
+        /* Initialize a RoutePlan */
+        RoutePlan routePlan = new RoutePlan();
 
-        for (HashMap.Entry<String, RouteWaypoint[]> place : places.entrySet()) {
-            /* Initialize a RoutePlan */
-            RoutePlan routePlan = new RoutePlan();
+        /*
+         * Initialize a RouteOption.HERE SDK allow users to define their own parameters for the
+         * route calculation,including transport modes,route types and route restrictions etc.Please
+         * refer to API doc for full list of APIs
+         */
+        RouteOptions routeOptions = new RouteOptions();
+        /* Other transport modes are also available e.g Pedestrian */
+        routeOptions.setTransportMode(RouteOptions.TransportMode.PEDESTRIAN);
+        /* Disable highway in this route. */
+        routeOptions.setHighwaysAllowed(false);
+        /* Calculate the shortest route available. */
+        routeOptions.setRouteType(RouteOptions.Type.SHORTEST);
+        /* Calculate 1 route. */
+        routeOptions.setRouteCount(1);
+        /* Finally set the route option */
+        routePlan.setRouteOptions(routeOptions);
 
-            /*
-             * Initialize a RouteOption.HERE SDK allow users to define their own parameters for the
-             * route calculation,including transport modes,route types and route restrictions etc.Please
-             * refer to API doc for full list of APIs
-             */
-            RouteOptions routeOptions = new RouteOptions();
-            /* Other transport modes are also available e.g Pedestrian */
-            routeOptions.setTransportMode(RouteOptions.TransportMode.PEDESTRIAN);
-            /* Disable highway in this route. */
-            routeOptions.setHighwaysAllowed(false);
-            /* Calculate the shortest route available. */
-            routeOptions.setRouteType(RouteOptions.Type.SHORTEST);
-            /* Calculate 1 route. */
-            routeOptions.setRouteCount(1);
-            /* Finally set the route option */
-            routePlan.setRouteOptions(routeOptions);
+        RouteWaypoint startPoint = places.get("current");
+        RouteWaypoint destination = places.get(GlobalValues.currentStore);
 
-            RouteWaypoint startPoint = place.getValue()[0];
-            RouteWaypoint destination = place.getValue()[1];
+        /* Add both waypoints to the route plan */
+        routePlan.addWaypoint(startPoint);
+        routePlan.addWaypoint(destination);
 
-            /* Add both waypoints to the route plan */
-            routePlan.addWaypoint(startPoint);
-            routePlan.addWaypoint(destination);
+        /* Trigger the route calculation,results will be called back via the listener */
+        coreRouter.calculateRoute(routePlan,
+                new Router.Listener<List<RouteResult>, RoutingError>() {
+                    @Override
+                    public void onProgress(int i) {
+                        /* The calculation progress can be retrieved in this callback. */
+                    }
 
-            /* Trigger the route calculation,results will be called back via the listener */
-            coreRouter.calculateRoute(routePlan,
-                    new Router.Listener<List<RouteResult>, RoutingError>() {
-                        @Override
-                        public void onProgress(int i) {
-                            /* The calculation progress can be retrieved in this callback. */
-                        }
+                    @Override
+                    public void onCalculateRouteFinished(List<RouteResult> routeResults,
+                                                         RoutingError routingError) {
+                        /* Calculation is done. Let's handle the result */
+                        if (routingError == RoutingError.NONE) {
+                            if (routeResults.get(0).getRoute() != null) {
+                                /* Create a MapRoute so that it can be placed on the map */
+                                m_mapRoute = new MapRoute(routeResults.get(0).getRoute());
 
-                        @Override
-                        public void onCalculateRouteFinished(List<RouteResult> routeResults,
-                                                             RoutingError routingError) {
-                            /* Calculation is done. Let's handle the result */
-                            if (routingError == RoutingError.NONE) {
-                                if (routeResults.get(0).getRoute() != null) {
-                                    /* Create a MapRoute so that it can be placed on the map */
-                                    m_mapRoute = new MapRoute(routeResults.get(0).getRoute());
+                                /* Show the maneuver number on top of the route */
+                                m_mapRoute.setManeuverNumberVisible(true);
 
-                                    /* Show the maneuver number on top of the route */
-                                    m_mapRoute.setManeuverNumberVisible(true);
+                                /* Add the MapRoute to the map */
+                                m_map.addMapObject(m_mapRoute);
 
-                                    /* Add the MapRoute to the map */
-                                    m_map.addMapObject(m_mapRoute);
-
-                                    /*
-                                     * We may also want to make sure the map view is orientated properly
-                                     * so the entire route can be easily seen.
-                                     */
-                                    //routeResults.get(0).getRoute().getDistance()
-                                    GeoBoundingBox gbb = routeResults.get(0).getRoute()
-                                            .getBoundingBox();
-                                    m_map.zoomTo(gbb, Map.Animation.NONE,
-                                            Map.MOVE_PRESERVE_ORIENTATION);
-                                } else {
-                                    Toast.makeText(m_activity,
-                                            "Error:route results returned is not valid",
-                                            Toast.LENGTH_LONG).show();
-                                }
+                                /*
+                                 * We may also want to make sure the map view is orientated properly
+                                 * so the entire route can be easily seen.
+                                 */
+                                //routeResults.get(0).getRoute().getDistance()
+                                GeoBoundingBox gbb = routeResults.get(0).getRoute()
+                                        .getBoundingBox();
+                                m_map.zoomTo(gbb, Map.Animation.NONE,
+                                        Map.MOVE_PRESERVE_ORIENTATION);
                             } else {
                                 Toast.makeText(m_activity,
-                                        "Error:route calculation returned error code: " + routingError,
+                                        "Error:route results returned is not valid",
                                         Toast.LENGTH_LONG).show();
                             }
+                        } else {
+                            Toast.makeText(m_activity,
+                                    "Error:route calculation returned error code: " + routingError,
+                                    Toast.LENGTH_LONG).show();
                         }
-                    });
-        }
+                    }
+                });
     }
 }

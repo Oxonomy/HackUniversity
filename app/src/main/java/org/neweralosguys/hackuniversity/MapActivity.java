@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class MapActivity extends AppCompatActivity {
 
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
