@@ -16,6 +16,7 @@
 
 package org.neweralosguys.hackuniversity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -53,6 +54,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
 
     arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
     fitToScanView = findViewById(R.id.image_view_fit_to_scan);
+    fitToScanView.setVisibility(View.INVISIBLE);
 
     arFragment.getArSceneView().getScene().addOnUpdateListener(this::onUpdateFrame);
   }
@@ -61,9 +63,8 @@ public class AugmentedImageActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     if (augmentedImageMap.isEmpty()) {
-      fitToScanView.setVisibility(View.VISIBLE);
+//      fitToScanView.setVisibility(View.VISIBLE);
     }
-
   }
 
   /**
@@ -91,17 +92,18 @@ public class AugmentedImageActivity extends AppCompatActivity {
           break;
 
         case TRACKING:
-          // Have to switch to UI Thread to update View.
-          fitToScanView.setVisibility(View.GONE);
-
-          // Create a new anchor for newly found images.
-          if (!augmentedImageMap.containsKey(augmentedImage)) {
-            AugmentedImageNode node = new AugmentedImageNode(this);
-            node.setImage(augmentedImage);
-            augmentedImageMap.put(augmentedImage, node);
-            arFragment.getArSceneView().getScene().addChild(node);
-//            Toast.makeText(this, "He is alive!", Toast.LENGTH_LONG).show();
-          }
+//          // Have to switch to UI Thread to update View.
+//          fitToScanView.setVisibility(View.GONE);
+//
+//          // Create a new anchor for newly found images.
+//          if (!augmentedImageMap.containsKey(augmentedImage)) {
+//            AugmentedImageNode node = new AugmentedImageNode(this);
+//            node.setImage(augmentedImage);
+//            augmentedImageMap.put(augmentedImage, node);
+//            arFragment.getArSceneView().getScene().addChild(node);
+////            Toast.makeText(this, "He is alive!", Toast.LENGTH_LONG).show();
+//          }
+            startActivity(new Intent(this, InfoActivity.class));
           break;
 
         case STOPPED:
