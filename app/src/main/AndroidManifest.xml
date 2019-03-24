@@ -24,7 +24,14 @@
         android:usesCleartextTraffic="false"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ProductListActivity"></activity>
-        <activity android:name=".ProductBasketActivity" />
+        <activity
+            android:name=".ProductBasketActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".InfoActivity"
             android:label="@string/title_activity_info"
@@ -59,19 +66,7 @@ Developers should always provide custom values for each of {YOUR_LABEL_NAME} and
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".AugmentedImageActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="locked"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MapActivity" />
     </application>
 
