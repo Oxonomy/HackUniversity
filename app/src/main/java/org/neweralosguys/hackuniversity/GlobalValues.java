@@ -1,6 +1,7 @@
 package org.neweralosguys.hackuniversity;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,9 @@ public class GlobalValues {
     public static String currentStore = "";
 
     public static ArrayList<Product> AllProducts = new ArrayList();
+    public static ArrayList<Product> BasketProducts = new ArrayList();
 
+    public static ProductBasketActivity ProductBasketActivity;
 
     public static void onCreate()
     {
@@ -24,4 +27,6 @@ public class GlobalValues {
         AllProducts.add(currentProduct);
         AllProducts.add(currentProduct);
     }
+
+
 }

@@ -16,15 +16,16 @@ public class ProductListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
-        GlobalValues.onCreate();
+
 
 
         // находим список
         ListView lvMain = (ListView) findViewById(R.id.productList);
 
+        names = new ArrayList();
         for (Product p: GlobalValues.AllProducts)
             names.add(p.Name);
-        Log.d("itemClick", "itemClick:  = " + GlobalValues.currentProduct);
+
         // создаем адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, names);
@@ -34,8 +35,10 @@ public class ProductListActivity extends AppCompatActivity {
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("itemClick", "itemClick: position = " + position + ", id = "
-                        + id);
+                Log.d("itemClick", "itemClick: position = " + position + ", id = " + id);
+                GlobalValues.BasketProducts.add(GlobalValues.AllProducts.get((int)id));
+
+                GlobalValues.ProductBasketActivity.UpdateBasketProducts();
             }
         });
     }
