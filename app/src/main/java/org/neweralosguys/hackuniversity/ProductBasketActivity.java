@@ -46,15 +46,16 @@ public class ProductBasketActivity extends AppCompatActivity {
     }
 
     public void UpdateBasketProducts(){
+        
+
         names = new ArrayList();
-
-
         for (Product p: GlobalValues.BasketProducts)
             names.add(p.Name);
         // создаем адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, names);
 
+        Log.d("itemClick", "itemClick: id = " + names);
         // присваиваем адаптер списку
         basketProducts.setAdapter(adapter);
     }

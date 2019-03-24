@@ -35,9 +35,9 @@ public class ProductListActivity extends AppCompatActivity {
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("itemClick", "itemClick: position = " + position + ", id = " + id);
-                GlobalValues.BasketProducts.add(GlobalValues.AllProducts.get((int)id));
 
+                GlobalValues.BasketProducts.add(GlobalValues.AllProducts.get((int)id));
+                Log.d("itemClick", "itemClick: id = " + id + ' ' + GlobalValues.BasketProducts);
                 GlobalValues.ProductBasketActivity.UpdateBasketProducts();
             }
         });
