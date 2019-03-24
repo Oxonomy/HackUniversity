@@ -93,10 +93,10 @@ public class MapActivity extends AppCompatActivity {
         m_mapFragmentView = new MapFragmentView(this);
     }
 
-    public void launchCameraActivity(View view) {
+    public void launchAugmentedImageActivity(View view) {
         switch (view.getId()) {
-            case R.id.toCameraActivityButton:
-                startActivity(new Intent(this, CameraActivity.class));
+            case R.id.toAugmentedImageActivity:
+                startActivity(new Intent(this, AugmentedImageActivity.class));
         }
     }
 }

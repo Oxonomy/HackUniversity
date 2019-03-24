@@ -68,6 +68,7 @@ Developers should always provide custom values for each of {YOUR_LABEL_NAME} and
 
 
         <activity android:name=".MapActivity" />
+        <activity android:name=".AugmentedImageActivity" />
     </application>
 
 </manifest>

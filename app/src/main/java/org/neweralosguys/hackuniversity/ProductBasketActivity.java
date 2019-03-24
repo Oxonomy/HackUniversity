@@ -76,5 +76,12 @@ public class ProductBasketActivity extends AppCompatActivity {
         basketProducts.setAdapter(adapter);
     }
 
+    public void launchMapActivity(View view) {
+        switch (view.getId()) {
+            case R.id.showMap:
+                startActivity(new Intent(this, MapActivity.class));
+        }
+    }
+
 
 }
