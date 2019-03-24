@@ -119,11 +119,6 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
     public void launchInfoActivity(View view) {
-
-        Map<String,String> map = new HashMap<String,String>();
-        map.put("A", "123");
-        GlobalValues.currentProduct = new Product("ABCD", map,"", 3.4f, "");
-        GlobalValues.currentStore = "A";
         startActivity(new Intent(this, InfoActivity.class));
     }
 }
