@@ -29,12 +29,14 @@
         android:layout_marginBottom="4dp"
         android:onClick="launchMapActivity"
         android:text="Нет товаров в корзине"
+        android:color="@android:color/holo_blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/basketProducts"
+
         android:layout_width="384dp"
         android:layout_height="597dp"
         android:layout_marginStart="8dp"

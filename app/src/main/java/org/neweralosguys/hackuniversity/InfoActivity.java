@@ -3,6 +3,7 @@ package org.neweralosguys.hackuniversity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -23,10 +24,10 @@ public class InfoActivity extends AppCompatActivity {
         ObjectNameView.setText(Product.Name);
 
         TextView PriceView = (TextView) findViewById(R.id.PriceView);
-        PriceView.setText("Цена: " + Product.Price.get(Store));
+        PriceView.setText("Цена: 55.99Р");
 
         TextView CalorieView = (TextView) findViewById(R.id.CalorieView);
-        PriceView.setText("Колорийность: " + Product.Calorie);
+        CalorieView.setText("Колорийность: " + Product.Calorie);
 
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.setRating(Product.Rating);
@@ -34,5 +35,9 @@ public class InfoActivity extends AppCompatActivity {
         TextView CompositionView = (TextView) findViewById(R.id.CompositionView);
         CompositionView.setText(Product.Composition);
     }
+    public void launchMapActivity(View view) {
+        GlobalValues.currentStore = "2 шага";
 
+                startActivity(new Intent(this, MapActivity.class));
+    }
 }

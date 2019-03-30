@@ -75,7 +75,7 @@ public class ProductBasketActivity extends AppCompatActivity {
 
         names = new ArrayList();
         for (Product p: GlobalValues.BasketProducts)
-            names.add(p.Name + " \t " + p.Price.get(GlobalValues.currentStore));
+            names.add(p.Name + " - " + p.Price.get(GlobalValues.currentStore)+"Р");
         // создаем адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, names);
